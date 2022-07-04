@@ -22,19 +22,46 @@
 										</div>
 										
 										<!-- Register Form -->
-										<form action="https://dreamguys.co.in/demo/doccure/doctor-dashboard.html">
+										<form action="{{route('patient.auth.register')}}" method="POST">
+											@csrf
+
+											@include('validation')
 											<div class="form-group form-focus">
-												<input type="text" class="form-control floating">
+												<input value="{{old('name')}}"  name="name" type="text" class="form-control floating">
 												<label class="focus-label">Name</label>
+												{{-- @error('name')
+												<p class="text-danger">*required</p>
+												@enderror --}}
 											</div>
 											<div class="form-group form-focus">
-												<input type="text" class="form-control floating">
+												<input value="{{old('email')}}"  name="email" type="text" class="form-control floating">
+												<label class="focus-label">Email</label>
+												{{-- @error('email')
+												<p class="text-danger">*required</p>
+												@enderror --}}
+											</div>
+											<div class="form-group form-focus">
+												<input value="{{old('cell')}}"  name="cell" type="text" class="form-control floating">
 												<label class="focus-label">Mobile Number</label>
+												{{-- @error('mobile')
+												<p class="text-danger">*required</p>
+												@enderror --}}
 											</div>
 											<div class="form-group form-focus">
-												<input type="password" class="form-control floating">
+												<input value="{{old('password')}}"  name="password" type="password" class="form-control floating">
 												<label class="focus-label">Create Password</label>
+												{{-- @error('password')
+												<p class="text-danger">*required</p>
+												@enderror --}}
 											</div>
+											<div class="form-group form-focus">
+												<input  name="password_confirmation" type="password" class="form-control floating">
+												<label class="focus-label">Confirm Password</label>
+												{{-- @error('password_confirmation')
+												<p class="text-danger">*required</p>
+												@enderror --}}
+											</div>
+											
 											<div class="text-right">
 												<a class="forgot-link" href="{{route('login.page')}}">Already have an account?</a>
 											</div>
