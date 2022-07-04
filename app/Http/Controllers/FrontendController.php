@@ -31,5 +31,11 @@ class FrontendController extends Controller
       return view('doctors.register');
      }
 
+     //patient dashboard page
+     	function showPatientDashboardPage()
+     {
+       return view('patients.dashboard');
+     }
+
 
 }

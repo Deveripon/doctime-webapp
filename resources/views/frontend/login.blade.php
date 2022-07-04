@@ -22,7 +22,7 @@
 													@csrf
 													@include('validation')
 													<div class="form-group form-focus">
-														<input name="email-or-mobile" type="text" class="form-control floating">
+														<input name="emailormobile" type="text" class="form-control floating">
 														<label class="focus-label">Email Or Mobile</label>
 													</div>
 													<div class="form-group form-focus">

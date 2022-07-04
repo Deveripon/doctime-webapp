@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Patient;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class PatientAuthController extends Controller
 {
@@ -36,14 +37,27 @@ class PatientAuthController extends Controller
     public function patientLogin(Request $request)
     {
         $this -> validate($request,[
-            'email-or-mobile'    => 'required',
+            'emailormobile'    => 'required',
             'password'           => 'required',
         ],[
-            'email-or-mobile.required'  => 'Input Email Or Mobile Number',
+            'emailormobile.required'  => 'Input Email Or Mobile Number',
         ]
     );
 
-      return $request-> all();
+    if(Auth::guard('patient')-> attempt(['email' => $request->emailormobile,'password' => $request->password])||
+    Auth::guard('patient')-> attempt(['cell' => $request->emailormobile,'password' => $request->password])){
+
+        return redirect()-> route('patient.dashboard');
+    }else{
+        return back()->with('danger','Wrong Email or Phone Or Password');
+    }
+
+    }
+
+    public function patientLogout()
+    {
+        Auth::guard('patient') -> logout();
+        return redirect()->route('login.page');
     }
 
 
