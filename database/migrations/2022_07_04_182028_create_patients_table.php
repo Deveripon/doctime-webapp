@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('email') -> unique();
             $table->string('cell')-> unique();
             $table->string('password');
-            $table->text('photo') -> default('https://cdn2.vectorstock.com/i/1000x1000/20/76/man-avatar-profile-vector-21372076.jpg');
+            $table->text('photo') -> default('https://i.pinimg.com/originals/49/3f/a0/493fa0f13970ab3ef29375669f670451.jpg');
             $table->text('date-of-birth') -> nullable();
             $table->integer('age') -> nullable();
             $table->string('city') -> nullable();

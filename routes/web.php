@@ -16,9 +16,13 @@ Route::get('/login',[FrontendController::class,'showLoginPage']) -> name('login.
 Route::get('patient-register',[FrontendController::class,'showPatientRegisterPage']) -> name('patient.register') -> middleware('patient.redirect');
 Route::get('patient-dashboard',[FrontendController::class,'showPatientDashboardPage'])-> name('patient.dashboard') -> middleware('patient');
 
-//patient password change routes
-Route::get('change-password',[ProfileSettingsController::class,'changePatientPassword']) -> name('password.change') -> middleware('patient');
-Route::post('change-password',[ProfileSettingsController::class,'changePassword']) -> name('password.change');
+//patient password changes routes
+Route::get('change-password',[ProfileSettingsController::class,'showChangePatientPasswordPage']) -> name('password.change') -> middleware('patient');
+Route::post('change-password',[ProfileSettingsController::class,'changePassword']) -> name('password.change')-> middleware('patient');
+//patients profile settings Routes
+Route::get('profile-settings',[ProfileSettingsController::class,'showPatientProfileSettingsPage']) -> name('profile.settings') -> middleware('patient');
+Route::post('profile-settings',[ProfileSettingsController::class,'patientProfileSettings']) -> name('profile.settings') -> middleware('patient');
+
 
 //Auth Routes For Patient
 Route::post('patient-register',[PatientAuthController::class,'patientRegister']) -> name('patient.auth.register');

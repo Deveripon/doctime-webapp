@@ -18,7 +18,7 @@
             <nav class="dashboard-menu">
                 <ul>
                     <li class="active">
-                        <a href="patient-dashboard.html">
+                        <a href="{{route('patient.dashboard')}}">
                             <i class="fas fa-columns"></i>
                             <span>Dashboard</span>
                         </a>
@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="profile-settings.html">
+                        <a href="{{route('profile.settings')}}">
                             <i class="fas fa-user-cog"></i>
                             <span>Profile Settings</span>
                         </a>
